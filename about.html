@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O mně | Matěj Sorbi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR (stejný jako na indexu) -->
+<nav class="top-nav">
+  <a href="index.html" class="brand">
+    <img src="" class="logo" alt="Logo">
+  </a>
+
+  <ul>
+    <li><a href="index.html" data-lang-cz="Domů" data-lang-en="Home">Domů</a></li>
+    <li><a href="about.html" class="active" data-lang-cz="O mně" data-lang-en="About">O mně</a></li>
+    <li><a href="results.html" data-lang-cz="Výsledky" data-lang-en="Results">Výsledky</a></li>
+    <li><a href="training.html" data-lang-cz="Trénink" data-lang-en="Training">Trénink</a></li>
+    <li><a href="gallery.html" data-lang-cz="Galerie" data-lang-en="Gallery">Galerie</a></li>
+    <li><a href="partners.html" data-lang-cz="Partneři" data-lang-en="Partners">Partneři</a></li>
+    <li><a href="contact.html" data-lang-cz="Kontakt" data-lang-en="Contact">Kontakt</a></li>
+  </ul>
+
+  <div class="lang-switch">
+    <img src="Assets/Photos/Language_pics/vlajka_cz_s.webp" alt="CZ" onclick="setLang('cz')" id="flag-cz">
+    <img src="Assets/Photos/Language_pics/VB.webp" alt="EN" onclick="setLang('en')" id="flag-en">
+  </div>
+</nav>
+
+<main class="page">
+  <section class="section about">
+    <div class="container about-grid">
+
+      <div class="about-img">
+        <img src="Assets/Photos/profilovka1.png" alt="Freediver photo">
+      </div>
+
+      <div class="about-text">
+        <h2 data-lang-cz="O mně" data-lang-en="About me">O mně</h2>
+
+        <p
+          data-lang-cz="Ahoj, jmenuji se Matěj Sorbi, je mi 19 let a jsem začínající závodní freediver. Zaměřuji se na hloubkové disciplíny CWT a CWTB, ale trénuji i bazénové disciplíny jako DYN. Své tréninky a závodní cestu dokumentuji na sociálních sítích, kde sdílím své pokroky, zážitky z tréninků i závodů. Mým cílem je posouvat své limity bezpečně a systematicky, a zároveň inspirovat ostatní k objevování krásy freedivingu."
+          data-lang-en="Hi, my name is Matěj Sorbi. I’m 19 and an aspiring competitive freediver. I focus on depth disciplines (CWT and CWTB) and also train pool disciplines like DYN. I document my training and competition journey on social media, sharing progress and experiences. My goal is to push my limits safely and systematically while inspiring others to discover the beauty of freediving.">
+          Ahoj, jmenuji se Matěj Sorbi, je mi 19 let a jsem začínající závodní freediver...
+        </p>
+
+        <div class="badges">
+          <div class="badge">
+            <span data-lang-cz="Disciplíny" data-lang-en="Disciplines">Disciplíny</span>
+            <strong>CWT / CWTB / DYN</strong>
+          </div>
+
+          <div class="badge">
+            <span data-lang-cz="Zaměření" data-lang-en="Focus">Zaměření</span>
+            <strong data-lang-cz="Hloubka & systematičnost" data-lang-en="Depth & consistency">
+              Hloubka & systematičnost
+            </strong>
+          </div>
+
+          <div class="badge">
+            <span data-lang-cz="Obsah" data-lang-en="Content">Obsah</span>
+            <strong>IG Reels / YouTube</strong>
+          </div>
+        </div>
+
+        <div class="about-cta">
+          <a class="btn-outline" href="results.html" data-lang-cz="Moje výsledky" data-lang-en="My results">Moje výsledky</a>
+          <a class="btn-solid" href="contact.html" data-lang-cz="Kontakt" data-lang-en="Contact">Kontakt</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<script>
+function setLang(lang){
+  document.querySelectorAll("[data-lang-cz]").forEach(el => {
+    el.textContent = el.getAttribute("data-lang-" + lang);
+  });
+
+  const flagCz = document.getElementById("flag-cz");
+  const flagEn = document.getElementById("flag-en");
+  if (flagCz && flagEn) {
+    flagCz.classList.toggle("active", lang === "cz");
+    flagEn.classList.toggle("active", lang === "en");
+  }
+
+  localStorage.setItem("lang", lang);
+}
+
+(function(){
+  const saved = localStorage.getItem("lang");
+  const browser = (navigator.language || "").toLowerCase().startsWith("en") ? "en" : "cz";
+  setLang(saved || browser);
+})();
+</script>
+
+</body>
+</html>
